@@ -5,7 +5,7 @@ using UnityEngine.Networking;
 
 public class AdminConsoleController : MonoBehaviour {
 
-
+    public ClientGridController playerGrid;
     private NetworkManager _networkManager;
 
 	// Use this for initialization
@@ -17,9 +17,8 @@ public class AdminConsoleController : MonoBehaviour {
     {
         _networkManager.StartServer();
     }
-
-	// Update is called once per frame
-	void Update () {
-		
+    // Update is called once per frame
+    void Update () {
+	    	
 	}
 }
