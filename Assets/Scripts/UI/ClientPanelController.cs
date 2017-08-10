@@ -7,6 +7,13 @@ public class ClientPanelController : MonoBehaviour {
 
     public Text userName, currentTest, progressText;
 
+    private Progress userProgress;
+
+    private void Start()
+    {
+        userProgress = new Progress();
+    }
+
     public void SetupClientPanel(string username, string initTest, int currentIndex, int maxIndex)
     {
         userName.text = username;
@@ -14,19 +21,16 @@ public class ClientPanelController : MonoBehaviour {
         progressText.text = string.Format("{0}/{1}", currentIndex, maxIndex);
     }
 
-    public void UpdateProgress(string testName, int current, int max)
+    private void LateUpdate()
     {
-        currentTest.text = testName;
-        progressText.text = string.Format("{0}/{1}", current, max);
+        userName.text = userProgress.username;
+        currentTest.text = userProgress.currentTest;
+        progressText.text = string.Format("{0}/{1}", userProgress.currentTestNum, userProgress.maxTestNum);
     }
 
-	// Use this for initialization
-	void Start () {
-		
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
+    public Progress UserProgress
+    {
+        get { return userProgress; }
+        set { userProgress = value; }
+    }
 }

@@ -6,17 +6,40 @@ using UnityEngine.Networking;
 public class AdminConsoleController : MonoBehaviour {
 
     public ClientGridController playerGrid;
-    private NetworkManager _networkManager;
+    private HostSession m_hostSession;
 
-	// Use this for initialization
-	void Start () {
-        _networkManager = GetComponent<NetworkManager>();
-	}
+    private void Awake()
+    {
+        m_hostSession = GetComponent<HostSession>();
+    }
+
+    // Use this for initialization
+    void Start () {
+        if (m_hostSession.useHLAPI)
+        {
+            
+        }
+        else
+        {
+
+        }
+    }
 	
     public void StartTestSession()
     {
-        _networkManager.StartServer();
+        m_hostSession.StartHosting();   
     }
+
+    public void UpdatePlayerProgress(Progress prog, int con)
+    {
+        playerGrid.UpdatePlayerProgress(prog, con);
+    }
+
+    public void AddPlayer(GameObject player)
+    {
+        playerGrid.AddPlayer(player);
+    }
+
     // Update is called once per frame
     void Update () {
 	    	

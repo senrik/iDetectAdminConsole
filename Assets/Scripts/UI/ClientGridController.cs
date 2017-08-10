@@ -4,13 +4,17 @@ using UnityEngine;
 
 public class ClientGridController : MonoBehaviour {
 
-    private List<GameObject> connectedPlayers;
-
+    public List<GameObject> connectedPlayers;
 
 	// Use this for initialization
 	void Start () {
         connectedPlayers = new List<GameObject>();
 	}
+
+    public void UpdatePlayerProgress(Progress prog, int i)
+    {
+        connectedPlayers[i-1].GetComponent<ClientPanelController>().UserProgress = prog;
+    }
 
     public void AddPlayer(GameObject player)
     {
@@ -18,8 +22,4 @@ public class ClientGridController : MonoBehaviour {
         player.transform.SetParent(transform);
     }
 	
-	// Update is called once per frame
-	void Update () {
-		
-	}
 }
