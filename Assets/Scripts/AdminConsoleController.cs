@@ -30,6 +30,11 @@ public class AdminConsoleController : MonoBehaviour {
         m_hostSession.StartHosting();   
     }
 
+    public void StopTestSession()
+    {
+        m_hostSession.StopServer();
+    }
+
     public void UpdatePlayerProgress(Progress prog, int con)
     {
         playerGrid.UpdatePlayerProgress(prog, con);
